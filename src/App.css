@@ -1,0 +1,6 @@
+.cart-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin-top: 100px;
+  margin-left: 100px;
+}

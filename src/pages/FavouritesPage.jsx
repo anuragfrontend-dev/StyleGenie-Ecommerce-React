@@ -1,0 +1,31 @@
+import Header from '../Header/Header'
+import { FavouritesProducts } from '../components/FavouritesProducts';
+import './FavouritesPage.css'
+
+export function FavouritesPage({ like,setlike, products,cart,onCart,
+  quantity,setQuantity,addedMessageId,setAddedMessageId,search,setSearch }) {
+
+  return (
+    <div className='container'>
+      <Header
+        like={like}
+        cart={cart}
+        search={search}
+        setSearch={setSearch}
+      />
+      <div className='like-cart'>
+        <FavouritesProducts 
+          products={products}
+          like={like}
+          setlike={setlike}
+          onCart={onCart}
+          quantity={quantity}
+          setQuantity={setQuantity}
+          addedMessageId={addedMessageId} 
+          setAddedMessageId={setAddedMessageId}
+          search={search}
+        />
+      </div>
+    </div>
+  )
+}
