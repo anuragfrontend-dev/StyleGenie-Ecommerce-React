@@ -1,0 +1,143 @@
+.header{
+  height: 65px;
+  background: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  grid-template-columns: 1fr 2.5fr 1.5fr;
+  align-items: center;
+  background-color: #fff;
+  color: #fff;
+  z-index: 100;
+}
+
+.left-section{
+  width: 300px;
+  padding-left: 30px;
+}
+
+.nav-links{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-right: 10px;
+}
+
+.logo{
+  height: 50px;
+}
+
+.title-text{
+  font-size: 24px;
+  font-weight: 600;
+  color: rgb(35, 157, 239);
+  text-decoration: underline;
+  text-decoration-color: orange;
+}
+
+.order-icon{
+  height: 20px;
+}
+
+.fav-text,
+.order-text{
+  font-size: 18px;
+}
+
+.profile-pic{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.middle-section{
+  width: 100%;
+  padding-right: 40px;
+  position: relative;
+}
+
+.search-bar{
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 40px;
+  border: none;
+  background:#edeef0;
+  border-radius: 10px;
+  border: 1px solid rgb(35, 157, 239);
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+}
+
+.search-bar::placeholder{
+  font-size: 16px;
+  color: #9ca3af;
+}
+
+
+
+.search-icon{
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  z-index: 200;
+  transform: translateY(-50%);
+}
+
+
+.right-section{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 30px;
+}
+
+.counter{
+  position: relative;
+}
+
+.cart-icon{
+  height: 20px;
+  width: 30px;
+}
+
+.cart-text{
+  font-size: 18px;
+  margin-left: 5px;
+}
+
+.fav-text{
+  margin-left: 5px;
+}
+
+.cart-count,
+.likes-count{
+  position: absolute;
+  width: 20px;
+  height: 18px;
+  font-size: 10px;
+  border: 2px solid #fff;
+  color: #fff;
+  text-align: center;
+  border-radius: 50%;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.likes-count{
+  background: #ef4444;
+  top: -5px;
+  left: 14px;
+}
+
+.cart-count{
+  background: rgb(254, 97, 0);
+  top: -5px;
+  left: 20px;
+}

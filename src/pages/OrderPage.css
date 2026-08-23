@@ -1,0 +1,145 @@
+.order-page-container{
+  background-color: #fff;
+  height: 100%;
+  width: 100%;
+}
+
+.orders-container{
+  margin: 65px auto 0;
+  max-width: 900px;
+  background-color: #fff;
+}
+
+.your-orders-text{
+  padding-top: 30px;
+}
+
+.order-placed,
+.order-total,
+.oredr-id-text{
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.order-placed-date{
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.order-total-amount,
+.order-total{
+  margin-left: 22px;
+}
+
+
+
+.order-total-amount{
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(177, 39, 4);
+}
+
+.order{
+  margin-top: 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+}
+
+.order-header{
+  display: flex;
+  justify-content:space-between;
+  background: rgb(240,240,240);
+  align-items: center;
+  height: 100px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.left-side{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.total-amount{
+  margin-left: 30px;
+}
+
+.order-item{
+  display: grid;
+  grid-template-columns: 100px 1fr 1fr;
+  padding-top: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 20px;
+  background: #fff;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.order-product-img{
+  width: 100%;
+  height: 100%;
+}
+
+.orderItem-details{
+  margin-left: 30px;
+}
+
+.order-item-name{
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.arriving-on{
+  margin-top: 5px;
+  font-size: 16px;
+}
+
+.arriving-on span{
+  margin-left: 5px;
+}
+
+.order-quantity{
+  margin-top: 5px;
+}
+
+.buy-it-again{
+  border: none;
+  padding: 8px 12px;
+  margin-top: 10px;
+  background: rgb(35, 157, 239);
+  color: #fff;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.tracking-cancel-items-button{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tracking-btn,
+.order-btn{
+  width: 150px;
+  padding: 8px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgb(220,220,220);
+  background: #fff;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.tracking-btn:hover,
+.order-btn:hover{
+  background-color: rgb(240,240,240);
+}

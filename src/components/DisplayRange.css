@@ -1,0 +1,52 @@
+.range-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px; 
+  
+  position: fixed;
+  top: 65px;
+  left: 0;
+  right: 0;
+  height: 40px;
+  margin-left: 100px;
+  
+  background-color: #fff;
+  border-bottom: 1px solid rgb(222, 222, 222);
+  z-index: 200;
+  
+  overflow-x: auto; 
+  overflow-y: hidden;
+  white-space: nowrap; 
+  -webkit-overflow-scrolling: touch;
+}
+
+
+.range-container::-webkit-scrollbar {
+  display: none; 
+}
+.range-container {
+  -ms-overflow-style: none; 
+  scrollbar-width: none;  
+}
+
+.range {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  white-space: nowrap; 
+  flex-shrink: 0;
+  cursor: pointer;
+  border: none;
+}
+
+.range:hover{
+  background-color: #300;
+  color: #fff;
+}
+
+.active{
+  background-color: #300;
+  color: #fff;
+}
+
