@@ -38,8 +38,15 @@ export function OrderPage({like,cart,orders,setOrders}){
             <img src={cartItem.productImg} className="product-img" />
             <div className="orderItem-details">
               <div className="order-item-name">{cartItem.productName}</div>
-              <div className="arriving-on">Arriving on:
-                <span>{dayjs(orderItems.date).add(3,'day').format('MMMM D')}</span></div>
+             
+              {
+              dayjs().isSame(dayjs(orderItems.date).add(3,'day'),'day')?
+              (<div className='status arrivig-today-status'>Arriving today</div>):
+                dayjs().isAfter(dayjs(orderItems.date).add(3,'day'),'day')?
+                (<div className='status delivered-status'>Delivered on: <span>{dayjs(orderItems.date).add(3,'day').format('MMMM D')}</span></div>)
+                :(<div className='status arriving-today-status'>Arriving on: <span>{dayjs(orderItems.date).add(3,'day').format('MMMM D')}</span></div>)
+              }
+
               <div className="order-quantity">Quantity:
                 <span>{cartItem.productQuantity}</span></div>
               <button className="buy-it-again">

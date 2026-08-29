@@ -93,14 +93,20 @@
   font-size: 18px;
 }
 
-.arriving-on{
+.status{
   margin-top: 5px;
   font-size: 16px;
 }
 
-.arriving-on span{
-  margin-left: 5px;
+.arrivig-today-status{
+  color: rgb(6, 148, 58);
 }
+
+.delivered-status span{
+  color: rgb(3, 100, 38);
+  font-weight: 600;
+}
+
 
 .order-quantity{
   margin-top: 5px;
