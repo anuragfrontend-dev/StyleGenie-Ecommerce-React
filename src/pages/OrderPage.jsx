@@ -1,12 +1,47 @@
 import { RefreshCcw } from 'lucide-react';
 import Header from "../components/Header";
 import dayjs from 'dayjs'
-import productImg from '../assets/product-img/cotton-bath-towels-teal.webp'
+import { money } from '../utiles/money';
 import './OrderPage.css'
 
 
-export function OrderPage({like,cart,orders,setOrders}){
-  console.log()
+export function OrderPage({like,cart,orders,setOrders,onCart}){
+
+  const handleCancelOrder = (id) => {
+
+  const filtered = orders.map((orderItems) => {
+    
+    const remainingItems = orderItems.items.filter((item) => item.productId !== id);
+
+    const totalAmount = remainingItems.reduce((sum, item) => {
+      return sum + (item.productPrice * item.productQuantity)
+    }, 0);
+
+    const totalDeliveryCharge = remainingItems.reduce((sum, item) => {
+      let deliveryCharge = 0;
+      let price = money(item.productPrice);
+      if (price <= 200) deliveryCharge = 20;
+      else if (price < 1000) deliveryCharge = 40;
+      else deliveryCharge = 0;
+      
+      return sum + (deliveryCharge * item.productQuantity);
+    }, 0);
+
+    const beforeTax = money(totalAmount) + totalDeliveryCharge;
+    const estimatedTax = (beforeTax / 100) * 10;
+    const newAmount = beforeTax + estimatedTax;
+
+    return {
+      ...orderItems,
+      items: remainingItems,
+      totalAmount: newAmount, 
+    };
+  })
+  .filter((orderItems) => orderItems.items.length > 0); 
+
+  setOrders(filtered);
+};
+
   return(
     <div className='order-page-container'>
       <Header 
@@ -49,14 +84,22 @@ export function OrderPage({like,cart,orders,setOrders}){
 
               <div className="order-quantity">Quantity:
                 <span>{cartItem.productQuantity}</span></div>
-              <button className="buy-it-again">
+              <button className="buy-it-again" onClick={()=>{
+                onCart(
+                  cartItem.productId,
+                  cartItem.productImg,
+                  cartItem.productName,
+                  cartItem.productPrice,
+                )
+              }}>
                 <RefreshCcw color='#FFF' height='20px' />
               Buy it again
               </button>
             </div>
             <div className="tracking-cancel-items-button">
               <button className='tracking-btn'>Track package</button>
-              <button className='order-btn'>Cancel order</button>
+              {dayjs().isAfter(dayjs(orderItems.date).add(3,'day'),'day')?
+                (null):<button className='order-btn' onClick={()=>handleCancelOrder(cartItem.productId)}>Cancel order</button>}
             </div>
           </div>
           )))}

@@ -123,6 +123,7 @@ export default function App() {
         cart={cart}
         orders={orders}
         setOrders={setOrders}
+        onCart={handleCart}
       />} 
       />
 
