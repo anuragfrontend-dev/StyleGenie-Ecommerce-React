@@ -1,11 +1,14 @@
 import { RefreshCcw } from 'lucide-react';
 import Header from "../Header/Header";
+import { useNavigate } from 'react-router-dom';
 import dayjs from 'dayjs'
 import { money } from '../utils/money';
 import './OrderPage.css'
 
 
 export function OrderPage({like,cart,orders,setOrders,onCart}){
+
+  const navigate=useNavigate();
 
   const handleCancelOrder = (id) => {
 
@@ -97,7 +100,9 @@ export function OrderPage({like,cart,orders,setOrders,onCart}){
               </button>
             </div>
             <div className="tracking-cancel-items-button">
-              <button className='tracking-btn'>Track package</button>
+              <button className='tracking-btn' onClick={()=>{
+                navigate(`/orders/${orderItems.orderId}/track/${cartItem.productId}`)
+              }}>Track package</button>
               {dayjs().isAfter(dayjs(orderItems.date).add(3,'day'),'day')?
                 (null):<button className='order-btn' onClick={()=>handleCancelOrder(cartItem.productId)}>Cancel order</button>}
             </div>
