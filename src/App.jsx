@@ -5,6 +5,7 @@ import { HomePage } from './pages/HomePage'
 import { FavouritesPage } from './pages/FavouritesPage';
 import { CartPage } from './pages/CartPage';
 import { OrderPage } from './pages/OrderPage';
+import { TrackingPage } from './pages/TrackingPage';
 
 import './App.css'
 
@@ -125,6 +126,12 @@ export default function App() {
         setOrders={setOrders}
         onCart={handleCart}
       />} 
+      />
+      <Route path='/Orders/:orderId/track/:productId' element={ <TrackingPage
+        like={like} 
+        cart={cart}
+        orders={orders}
+      />}
       />
 
     </Routes>

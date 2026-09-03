@@ -1,4 +1,5 @@
 import { RefreshCcw } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import Header from "../components/Header";
 import dayjs from 'dayjs'
 import { money } from '../utiles/money';
@@ -6,6 +7,8 @@ import './OrderPage.css'
 
 
 export function OrderPage({like,cart,orders,setOrders,onCart}){
+
+  const navigate=useNavigate();
 
   const handleCancelOrder = (id) => {
 
@@ -51,7 +54,7 @@ export function OrderPage({like,cart,orders,setOrders,onCart}){
       <div className="orders-container">
         <h1 className="your-orders-text">Your Orders</h1>
         {orders.map((orderItems)=>(
-          <div className="order" key={orderItems.id}>
+          <div className="order" key={orderItems.orderId}>
           <div className="order-header">
             <div className="left-side">
               <div>
@@ -69,7 +72,7 @@ export function OrderPage({like,cart,orders,setOrders,onCart}){
             </div>
           </div>
           {orderItems.items.map((cartItem=>(
-            <div className="order-item">
+            <div className="order-item" key={cartItem.productId}>
             <img src={cartItem.productImg} className="product-img" />
             <div className="orderItem-details">
               <div className="order-item-name">{cartItem.productName}</div>
@@ -97,7 +100,9 @@ export function OrderPage({like,cart,orders,setOrders,onCart}){
               </button>
             </div>
             <div className="tracking-cancel-items-button">
-              <button className='tracking-btn'>Track package</button>
+              <button className='tracking-btn' onClick={()=>{
+                navigate(`/orders/${orderItems.orderId}/track/${cartItem.productId}`)
+              }}>Track package</button>
               {dayjs().isAfter(dayjs(orderItems.date).add(3,'day'),'day')?
                 (null):<button className='order-btn' onClick={()=>handleCancelOrder(cartItem.productId)}>Cancel order</button>}
             </div>
