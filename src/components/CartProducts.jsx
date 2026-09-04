@@ -1,4 +1,4 @@
-import { money } from "../utiles/money"
+import { money } from "../utils/money"
 import './CartProducts.css'
 
 export function CartProducts({setCart,cart}) {

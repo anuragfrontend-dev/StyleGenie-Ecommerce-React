@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { money } from "../utiles/money";
+import { money } from "../utils/money";
 import dayjs from 'dayjs'
 import './PaymentSummary.css'
 

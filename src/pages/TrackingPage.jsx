@@ -1,7 +1,7 @@
 import { Link, useParams } from 'react-router-dom'
 import { CircleCheck } from 'lucide-react'
 import Header from '../components/Header'
-import { getDeliveryProgress } from '../utiles/delivery'
+import { getDeliveryProgress } from '../utils/delivery'
 import dayjs from 'dayjs'
 
 

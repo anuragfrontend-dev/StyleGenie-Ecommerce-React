@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Star, CircleCheck,Heart } from 'lucide-react';
-import { money } from '../utiles/money';
+import { money } from '../utils/money';
 import './FavouritesProducts.css'
 export function FavouritesProducts({like,setlike,products,
   onCart,quantity,setQuantity,addedMessageId,setAddedMessageId,search}) {

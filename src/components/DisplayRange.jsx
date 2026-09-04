@@ -1,5 +1,4 @@
 import './DisplayRange.css'
-import { money } from '../utiles/money';
 import { useEffect, useRef, useState } from 'react';
 
 export function DisplayRange({handleAllFilter,handleRange,handleCategories,setCategoriesActive}) {

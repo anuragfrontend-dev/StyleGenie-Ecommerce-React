@@ -1,5 +1,5 @@
 import { Star, CircleCheck,Heart } from 'lucide-react';
-import { money } from '../utiles/money';
+import { money } from '../utils/money';
 import './DisplayProduct.css'
 import { useState } from 'react';
 

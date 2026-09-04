@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { money } from '../utiles/money';
 import { CartHeader } from '../cartHeader/CartHeader';
 import { CartProducts } from '../components/CartProducts';
 import { PaymentSummary } from '../components/PaymentSummary';

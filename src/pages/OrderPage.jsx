@@ -2,7 +2,7 @@ import { RefreshCcw } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import Header from "../components/Header";
 import dayjs from 'dayjs'
-import { money } from '../utiles/money';
+import { money } from '../utils/money';
 import './OrderPage.css'
 
 
