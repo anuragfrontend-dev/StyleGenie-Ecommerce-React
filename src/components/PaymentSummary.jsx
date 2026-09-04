@@ -65,7 +65,7 @@ export function PaymentSummary({ cart, setCart, setOrders }) {
       </div>
       <div className='row'>
         <span>Estimated tax (10%):</span>
-        <span>₹{estimatedTax.toLocaleString()}</span>
+        <span>₹{Math.round(estimatedTax).toLocaleString()}</span>
       </div>
       <hr />
       <div className="row total">

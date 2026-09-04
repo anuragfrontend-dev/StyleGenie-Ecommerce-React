@@ -89,7 +89,6 @@ export default function App() {
         onCart={handleCart}
         setQuantity={setQuantity}
         quantity={quantity}
-        cart={cart}
         addedMessageId={addedMessageId}
         setAddedMessageId={setAddedMessageId}
         setSearch={setSearch}
