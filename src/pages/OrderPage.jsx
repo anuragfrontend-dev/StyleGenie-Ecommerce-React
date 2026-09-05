@@ -1,14 +1,11 @@
-import { RefreshCcw } from 'lucide-react';
 import Header from "../Header/Header";
-import { useNavigate } from 'react-router-dom';
 import dayjs from 'dayjs'
 import { money } from '../utils/money';
+import { OrderItems } from '../components/OrderItems';
 import './OrderPage.css'
 
 
 export function OrderPage({like,cart,orders,setOrders,onCart}){
-
-  const navigate=useNavigate();
 
   const handleCancelOrder = (id) => {
 
@@ -71,43 +68,11 @@ export function OrderPage({like,cart,orders,setOrders,onCart}){
               <div className="order-id">{orderItems.orderId}</div>
             </div>
           </div>
-          {orderItems.items.map((cartItem=>(
-            <div className="order-item" key={cartItem.productId}>
-            <img src={cartItem.productImg} className="product-img" />
-            <div className="orderItem-details">
-              <div className="order-item-name">{cartItem.productName}</div>
-             
-              {
-              dayjs().isSame(dayjs(orderItems.date).add(3,'day'),'day')?
-              (<div className='status arrivig-today-status'>Arriving today</div>):
-                dayjs().isAfter(dayjs(orderItems.date).add(3,'day'),'day')?
-                (<div className='status delivered-status'>Delivered on: <span>{dayjs(orderItems.date).add(3,'day').format('MMMM D')}</span></div>)
-                :(<div className='status arriving-today-status'>Arriving on: <span>{dayjs(orderItems.date).add(3,'day').format('MMMM D')}</span></div>)
-              }
-
-              <div className="order-quantity">Quantity:
-                <span>{cartItem.productQuantity}</span></div>
-              <button className="buy-it-again" onClick={()=>{
-                onCart(
-                  cartItem.productId,
-                  cartItem.productImg,
-                  cartItem.productName,
-                  cartItem.productPrice,
-                )
-              }}>
-                <RefreshCcw color='#FFF' height='20px' />
-              Buy it again
-              </button>
-            </div>
-            <div className="tracking-cancel-items-button">
-              <button className='tracking-btn' onClick={()=>{
-                navigate(`/orders/${orderItems.orderId}/track/${cartItem.productId}`)
-              }}>Track package</button>
-              {dayjs().isAfter(dayjs(orderItems.date).add(3,'day'),'day')?
-                (null):<button className='order-btn' onClick={()=>handleCancelOrder(cartItem.productId)}>Cancel order</button>}
-            </div>
-          </div>
-          )))}
+          <OrderItems 
+            orderItems={orderItems} 
+            onCart={onCart}
+            handleCancelOrder={handleCancelOrder}
+          />
         </div>
         ))}
       </div>
