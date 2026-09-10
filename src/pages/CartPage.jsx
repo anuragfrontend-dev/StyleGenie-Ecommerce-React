@@ -2,18 +2,19 @@ import { Link } from 'react-router-dom';
 import { CartHeader } from '../cartHeader/CartHeader';
 import { CartProducts } from '../components/CartProducts';
 import { PaymentSummary } from '../components/PaymentSummary';
-
+import { useCart } from '../context/CartContext';
 import './CartPage.css';
 
-export function CartPage({ cart, setCart , like,setOrders }) {
 
+export function CartPage({ like,setOrders }) {
+  const { cart }=useCart()
 
   return (
     <div className='cart-page-container'>
-      <CartHeader cart={cart} like={like}/>
+      <CartHeader like={like}/>
 
       <div className="cart-page">
-        {cart.length > 0 ?
+        {cart?.length > 0 ?
           '':
           <div>
             <div className='empty-text'>Your cart is empty.</div>
@@ -24,8 +25,8 @@ export function CartPage({ cart, setCart , like,setOrders }) {
         }
         <div className='review-text'>Review your order</div>
         <div className="cart-items-container">
-          <CartProducts setCart={setCart} cart={cart} />
-          <PaymentSummary setCart={setCart} cart={cart} setOrders={setOrders} />
+          <CartProducts  />
+          <PaymentSummary  setOrders={setOrders} />
         </div>
       </div>
     </div>

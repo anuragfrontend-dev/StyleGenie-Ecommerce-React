@@ -2,8 +2,12 @@ import { Link } from 'react-router-dom';
 import { Star, CircleCheck,Heart } from 'lucide-react';
 import { money } from '../utils/money';
 import './FavouritesProducts.css'
+import { useCart } from '../context/CartContext';
+
 export function FavouritesProducts({like,setlike,products,
-  onCart,quantity,setQuantity,addedMessageId,setAddedMessageId,search}) {
+  quantity,setQuantity,addedMessageId,setAddedMessageId,search}) {
+  
+  const { dispatch:cartDispatch }=useCart();
   
   const likeProducts=products.filter((product)=>(like.includes(product.id)));
   
@@ -91,13 +95,17 @@ export function FavouritesProducts({like,setlike,products,
                   )}
                 </div>
                 <button className='add-to-cart-button' onClick={() => {
-                  onCart(
-                    product.id,
-                    product.thumbnail,
-                    product.title,
-                    product.price,
-                    handleAddedMessage(product.id)
-                  )
+                  cartDispatch({
+                    type:'ADD_TO_CART',
+                    payload:{
+                      id:product.id,
+                      thumbnail:product.thumbnail,
+                      title:product.title,
+                      price:product.price,
+                      qty:quantity[product.id]||1
+                    }
+                  })
+                  handleAddedMessage(product.id);
                 }}
                 >Add to Cart</button>
               </div>

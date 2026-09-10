@@ -14,7 +14,6 @@ export default function App() {
   const[displayProducts,setDisplayProducts]=useState([]);
   const[like,setlike]=useState(JSON.parse(localStorage.getItem('like'))||[]);
   const[quantity,setQuantity]=useState({});
-  const[cart,setCart]=useState(JSON.parse(localStorage.getItem('cart'))||[]);
   const[addedMessageId,setAddedMessageId]=useState(null);
   const[orders,setOrders]=useState(JSON.parse(localStorage.getItem('orders'))||[]);
   const[search,setSearch]=useState('')
@@ -34,38 +33,9 @@ export default function App() {
     getData()
   },[])
 
-   const handleCart=(id,thumbnail,title,price)=>{
-    const qty=quantity[id]||1;
-    const newCart={
-      productId:id,
-      productImg:thumbnail,
-      productName:title,
-      productPrice:price,
-      productQuantity:qty
-    }
-    setCart(prev=>{
-      const existing = prev.find((cartItem)=>{
-        return(cartItem.productId===id)
-      })
-
-      if(existing){
-        return prev.map((cartItem)=>(
-          cartItem.productId===id?
-          {...cartItem,productQuantity:cartItem.productQuantity+qty}:cartItem
-        ))
-      }
-      return [...prev,newCart]
-    })
-
-  }
-
   useEffect(()=>{
     localStorage.setItem('like',JSON.stringify(like));
   },[like])
-
-  useEffect(()=>{
-    localStorage.setItem('cart',JSON.stringify(cart));
-  },[cart])
 
   useEffect(()=>{
     localStorage.setItem('orders',JSON.stringify(orders));
@@ -81,9 +51,6 @@ export default function App() {
         setDisplayProducts={setDisplayProducts}
         like={like}
         setlike={setlike}
-        setCart={setCart}
-        cart={cart}
-        onCart={handleCart}
         setQuantity={setQuantity}
         quantity={quantity}
         addedMessageId={addedMessageId}
@@ -96,8 +63,6 @@ export default function App() {
         like={like}
         setlike={setlike}
         products={products}
-        cart={cart}
-        onCart={handleCart}
         quantity={quantity}
         setQuantity={setQuantity}
         setAddedMessageId={setAddedMessageId}
@@ -108,8 +73,6 @@ export default function App() {
       />
 
       <Route path='/Cart' element={<CartPage 
-        cart={cart}
-        setCart={setCart}
         like={like}
         orders={orders}
         setOrders={setOrders}
@@ -117,15 +80,12 @@ export default function App() {
       />
       <Route path='/Orders' element={<OrderPage
         like={like} 
-        cart={cart}
         orders={orders}
         setOrders={setOrders}
-        onCart={handleCart}
       />} 
       />
       <Route path='/Orders/:orderId/track/:productId' element={ <TrackingPage
         like={like} 
-        cart={cart}
         orders={orders}
       />}
       />

@@ -1,10 +1,12 @@
 import { Star, CircleCheck,Heart } from 'lucide-react';
 import { money } from '../utils/money';
+import { useCart } from '../context/CartContext';
 import './DisplayProduct.css'
 
 
-export function DisplayProduct({displayProducts,like,setlike,onCart,
+export function DisplayProduct({displayProducts,like,setlike,
   setQuantity,quantity,addedMessageId,setAddedMessageId,search}){
+    const { dispatch:cartDispatch }=useCart();
 
   const handleAddedMessage=(id)=>{
     setAddedMessageId(id);
@@ -82,13 +84,18 @@ export function DisplayProduct({displayProducts,like,setlike,onCart,
             </div>
             <button className='add-to-cart-button' 
               onClick={()=>{
-                onCart(
-                  product.id,
-                  product.thumbnail,
-                  product.title,
-                  product.price,
-                  handleAddedMessage(product.id)
-              )}}>
+                cartDispatch({
+                  type:'ADD_TO_CART',
+                  payload:{
+                    id:product.id,
+                    thumbnail:product.thumbnail,
+                    title:product.title,
+                    price:product.price,
+                    qty:quantity[product.id]||1
+                  }
+                })
+                handleAddedMessage(product.id);
+              }}>
                 Add to Cart
             </button>
           </div>

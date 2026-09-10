@@ -1,19 +1,18 @@
 import { money } from "../utils/money"
+import { useCart } from "../context/CartContext"
 import './CartProducts.css'
 
-export function CartProducts({setCart,cart}) {
+export function CartProducts() {
+  const { cart, dispatch }=useCart();
 
   const updateQuantity=(id,newQuantity)=>{
-    setCart(prevCart=> prevCart.map((cartItem)=>(
-      cartItem.productId===id ? {...cartItem,productQuantity:Number(newQuantity)}: cartItem
-    )))
-  }
-
-  const handleRemoveItem=(id)=>{
-    const filtered=cart.filter((cartItem)=>{
-      return(cartItem.productId!==id)
+    dispatch({
+      type:'UPDATE_QUANTITY',
+      payload:{
+        id:id,
+        qty:newQuantity
+      }
     })
-    setCart(filtered);
   }
 
   return (
@@ -36,7 +35,12 @@ export function CartProducts({setCart,cart}) {
               </div>
               <button className='remove-buttom'
                 onClick={() => {
-                  handleRemoveItem(cartItem.productId)
+                  dispatch({
+                    type:'REMOVE_FROM_CART',
+                    payload:{
+                      id:cartItem.productId
+                    }
+                  })
                 }}>remove</button>
             </div>
           </div>

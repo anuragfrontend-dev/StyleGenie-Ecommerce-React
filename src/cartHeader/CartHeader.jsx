@@ -1,10 +1,14 @@
 import { Link } from 'react-router-dom';
 import { Heart,Lock } from 'lucide-react';
 import logo from '../assets/icon/logo.png';
+import { useCart } from '../context/CartContext';
 import './CartHeader.css'
 
 
-export function CartHeader({ like,cart }){
+export function CartHeader({ like }){
+
+  const { cart }=useCart();
+  
   const totalLikeProducts=like.length;
 
   const totalQuantity=cart.reduce((sum,cartItems)=>(sum+cartItems.productQuantity),0)

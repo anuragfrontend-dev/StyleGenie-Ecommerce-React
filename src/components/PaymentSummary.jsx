@@ -1,10 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { money } from "../utils/money";
 import dayjs from 'dayjs'
+import { useCart } from "../context/CartContext";
 import './PaymentSummary.css'
 
-export function PaymentSummary({ cart, setCart, setOrders }) {
+export function PaymentSummary({ setOrders }) {
   const navigate=useNavigate();
+  const {cart, dispatch }=useCart();
 
   const onOrder = (totalAmount, totalQuantity) => {
     const newOrder = {
@@ -16,7 +18,7 @@ export function PaymentSummary({ cart, setCart, setOrders }) {
     }
 
     setOrders(prev => ([newOrder,...prev]));
-    setCart([]);
+    dispatch({type:'CLEAR_CART'})
   }
 
   const totalQuantity = cart.reduce((sum, cartItem) => sum + cartItem.productQuantity, 0);

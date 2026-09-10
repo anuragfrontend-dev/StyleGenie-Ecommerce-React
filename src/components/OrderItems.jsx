@@ -2,10 +2,11 @@ import { RefreshCcw } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { getDeliveryProgress } from '../utils/delivery';
 import dayjs from "dayjs"
+import { useCart } from '../context/CartContext';
 import './OrderItems.css'
 
-export function OrderItems({orderItems,onCart,handleCancelOrder}){
-
+export function OrderItems({orderItems,handleCancelOrder}){
+  const { dispatch }=useCart();
   const navigate=useNavigate();
 
   const { percent, deliveryDate }=getDeliveryProgress(orderItems.date);
@@ -35,12 +36,16 @@ export function OrderItems({orderItems,onCart,handleCancelOrder}){
           <div className="order-quantity">Quantity:
             <span>{cartItem.productQuantity}</span></div>
           <button className="buy-it-again" onClick={()=>{
-            onCart(
-              cartItem.productId,
-              cartItem.productImg,
-              cartItem.productName,
-              cartItem.productPrice,
-            )
+            dispatch({
+              type:'ADD_TO_CART',
+              payload:{
+                id:cartItem.productId,
+                thumbnail:cartItem.productImg,
+                title:cartItem.productName,
+                price:cartItem.productPrice,
+                qty:1
+              }
+            })
           }}>
             <RefreshCcw color='#FFF' height='20px' />
           Buy it again
