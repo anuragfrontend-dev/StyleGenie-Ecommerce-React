@@ -2,12 +2,14 @@ import { Link } from 'react-router-dom';
 import { Heart,Lock } from 'lucide-react';
 import logo from '../assets/icon/logo.png';
 import { useCart } from '../context/CartContext';
+import { useFavourites } from '../context/FavouritesContext';
 import './CartHeader.css'
 
 
-export function CartHeader({ like }){
+export function CartHeader(){
 
   const { cart }=useCart();
+  const { like }=useFavourites();
   
   const totalLikeProducts=like.length;
 

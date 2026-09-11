@@ -5,7 +5,7 @@ import { DisplayRange } from '../components/DisplayRange';
 import { SideBar } from '../components/SideBar';
 
 export function HomePage({products,displayProducts,setDisplayProducts,
-  like,setlike,setQuantity,quantity,addedMessageId,setAddedMessageId,search,setSearch}) {
+ setQuantity,quantity,addedMessageId,setAddedMessageId,search,setSearch}) {
   
   const[categoriesActive,setCategoriesActive]=useState('');
   
@@ -38,7 +38,6 @@ export function HomePage({products,displayProducts,setDisplayProducts,
   return (
     <div className='container'>
       <Header 
-        like={like}
         search={search}
         setSearch={setSearch}
       />
@@ -56,8 +55,6 @@ export function HomePage({products,displayProducts,setDisplayProducts,
       <div className="cart-container">
         <DisplayProduct 
           displayProducts={displayProducts}
-          like={like} 
-          setlike={setlike}
           setQuantity={setQuantity}
           quantity={quantity}
           setAddedMessageId={setAddedMessageId}

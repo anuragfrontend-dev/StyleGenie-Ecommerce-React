@@ -5,12 +5,14 @@ import logo from '../assets/icon/logo.png'
 import order from '../assets/icon/order.png'
 import cartIcon from '../assets/icon/cart-icon.png'
 import { useCart } from '../context/CartContext';
+import { useFavourites } from '../context/FavouritesContext';
 
 
 
-export default function Header({like,search,setSearch}){
+export default function Header({ search,setSearch }){
   
   const { cart }=useCart();
+  const { like }=useFavourites();
 
   let totalLikeProducts=like.length;
 

@@ -6,12 +6,12 @@ import { useCart } from '../context/CartContext';
 import './CartPage.css';
 
 
-export function CartPage({ like,setOrders }) {
+export function CartPage({ setOrders }) {
   const { cart }=useCart()
 
   return (
     <div className='cart-page-container'>
-      <CartHeader like={like}/>
+      <CartHeader />
 
       <div className="cart-page">
         {cart?.length > 0 ?

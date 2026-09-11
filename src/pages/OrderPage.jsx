@@ -5,7 +5,7 @@ import { OrderItems } from '../components/OrderItems';
 import './OrderPage.css'
 
 
-export function OrderPage({like,orders,setOrders}){
+export function OrderPage({ orders,setOrders }){
 
   const handleCancelOrder = (id) => {
   const filtered = orders.map((orderItems) => {
@@ -41,9 +41,7 @@ export function OrderPage({like,orders,setOrders}){
 
   return(
     <div className='order-page-container'>
-      <Header 
-        like={like} 
-      />
+      <Header />
       <div className="orders-container">
         <h1 className="your-orders-text">Your Orders</h1>
         {orders.map((orderItems)=>(

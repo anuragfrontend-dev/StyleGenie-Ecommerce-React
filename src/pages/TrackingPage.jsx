@@ -6,7 +6,7 @@ import dayjs from 'dayjs'
 
 
 import './TrackingPage.css'
-export function TrackingPage({ like, orders }) {
+export function TrackingPage({ orders }) {
 
   const { orderId, productId } = useParams();
 
@@ -34,9 +34,7 @@ export function TrackingPage({ like, orders }) {
 
   return (
     <div className="tracking-page-container">
-      <Header
-        like={like}
-      />
+      <Header />
       <div className="tracking-content">
         <Link to={'/Orders'}>
           <button className='view-orders'>View all Orders</button>

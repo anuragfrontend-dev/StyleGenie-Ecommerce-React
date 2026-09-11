@@ -12,7 +12,6 @@ import './App.css'
 export default function App() {
   const [products,setProducts]=useState([]);
   const[displayProducts,setDisplayProducts]=useState([]);
-  const[like,setlike]=useState(JSON.parse(localStorage.getItem('like'))||[]);
   const[quantity,setQuantity]=useState({});
   const[addedMessageId,setAddedMessageId]=useState(null);
   const[orders,setOrders]=useState(JSON.parse(localStorage.getItem('orders'))||[]);
@@ -34,10 +33,6 @@ export default function App() {
   },[])
 
   useEffect(()=>{
-    localStorage.setItem('like',JSON.stringify(like));
-  },[like])
-
-  useEffect(()=>{
     localStorage.setItem('orders',JSON.stringify(orders));
   },[orders])
   
@@ -49,8 +44,6 @@ export default function App() {
         setProducts={setProducts} 
         displayProducts={displayProducts}
         setDisplayProducts={setDisplayProducts}
-        like={like}
-        setlike={setlike}
         setQuantity={setQuantity}
         quantity={quantity}
         addedMessageId={addedMessageId}
@@ -60,8 +53,6 @@ export default function App() {
         />}
          />
       <Route path='/Favourites' element={<FavouritesPage 
-        like={like}
-        setlike={setlike}
         products={products}
         quantity={quantity}
         setQuantity={setQuantity}
@@ -73,19 +64,16 @@ export default function App() {
       />
 
       <Route path='/Cart' element={<CartPage 
-        like={like}
         orders={orders}
         setOrders={setOrders}
       />} 
       />
       <Route path='/Orders' element={<OrderPage
-        like={like} 
         orders={orders}
         setOrders={setOrders}
       />} 
       />
       <Route path='/Orders/:orderId/track/:productId' element={ <TrackingPage
-        like={like} 
         orders={orders}
       />}
       />
