@@ -7,6 +7,7 @@ import cartIcon from '../assets/icon/cart-icon.png'
 
 
 
+
 export default function Header({like,cart,search,setSearch}){
   let totalLikeProducts=like.length;
 
@@ -57,7 +58,7 @@ export default function Header({like,cart,search,setSearch}){
           </div>
            <div className='cart-text'>Cart</div>
         </Link>
-        <img src={logo} className='profile-pic' />
+        <img src='/user.png' className='profile-pic' />
       </div>
     </header>
   )

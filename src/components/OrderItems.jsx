@@ -13,20 +13,22 @@ export function OrderItems({orderItems,onCart,handleCancelOrder}){
   let deliveryStatus;
 
   if(percent>=100){
-    deliveryStatus=<div className='status'>Delivered on: <span>{deliveryDate.format('MMMM D')}</span></div>
+    deliveryStatus=<div className='status'>Delivered on: <span>{deliveryDate.format('MMM D')}</span></div>
   }
   else if(dayjs().isSame(deliveryDate,'day')){
     deliveryStatus=<div className='status order-arriving-today-status'>Arriving today</div>
   }
   else{
-    deliveryStatus=<div className='status'>Arriving on: <span>{deliveryDate.format('MMMM D')}</span></div>
+    deliveryStatus=<div className='status'>Arriving on: <span>{deliveryDate.format('MMM D')}</span></div>
   }
 
   return(
     <>
     {orderItems.items.map((cartItem=>(
         <div className="order-item" key={cartItem.productId}>
-        <img src={cartItem.productImg} className="product-img" />
+          <div className='order-image-container'>
+            <img src={cartItem.productImg} className="product-img" />
+          </div>
         <div className="orderItem-details">
           <div className="order-item-name">{cartItem.productName}</div>
           

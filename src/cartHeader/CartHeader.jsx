@@ -23,13 +23,15 @@ export function CartHeader({ like,cart }){
         </Link>
       </div>
       <div className="right-cart-section">
-        <Link to='/Favourites' className='cart-likes  cart-nav-link'>
-           <Heart height={20}/>
-           <div className="cart-likes-count">{totalLikeProducts}</div>
-           <div className='cart-fav-text'>Favourites</div>
+        <Link  to='/Favourites' className='cart-nav-link cart-likes' >
+          <Heart height={20} />
+          <div className='cart-fav-text'>Favourites</div>
+          {totalLikeProducts >0 && 
+          (<div className="cart-likes-count">{totalLikeProducts}</div>)}
         </Link>
-        <Lock height={20} />
+        <Lock height={20} className='lock-icon' />
       </div>
     </div>
   )
 }
+

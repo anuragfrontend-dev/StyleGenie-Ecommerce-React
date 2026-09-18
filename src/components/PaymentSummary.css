@@ -1,19 +1,23 @@
 .price-summary {
   flex: 1;
-  padding: 20px;
+  padding: 10px;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
   background: #fff;
   height: fit-content;
 }
 
+h3{
+  font-size: 16px;
+}
+
 .price-summary .row {
   display: flex;
   justify-content: space-between;
-  margin: 12px 0;
+  margin: 8px 0;
 }
 .price-summary .total {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
 }
 
@@ -21,7 +25,7 @@
 
 .buy-btn {
   width: 100%;
-  padding: 12px;
+  padding: 8px;
   background: #ff9f00; 
   color: white;
   border: none;
@@ -29,7 +33,7 @@
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 8px;
 }
 .buy-btn:hover {
   background: #fb8c00;
@@ -43,4 +47,32 @@
 .free{
   color: #10b981;
   font-weight: 600;
+}
+
+@media (min-max:420px){
+  h3{
+    font-size: 18px;
+  }
+  .price-summary .total{
+    font-size: 18px;
+  }
+  .buy-btn{
+    font-size: 16px;
+  }
+}
+
+@media (min-width:768px){
+  .price-summary { 
+    padding: 20px;
+  }
+
+  .price-summary .row {
+    margin: 12px 0;
+  }
+
+  .buy-btn {
+    padding: 12px;
+    margin-top: 10px;
+  }
+
 }

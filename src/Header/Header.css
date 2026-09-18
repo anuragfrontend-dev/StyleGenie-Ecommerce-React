@@ -1,70 +1,90 @@
-.header{
-  height: 65px;
+.header {
+  height: 80px;
   background: #fff;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   display: grid;
-  grid-template-columns: 1fr 2.5fr 1.5fr;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    "left-section right-section"
+    "middle-section middle-section";
   align-items: center;
   background-color: #fff;
   color: #fff;
   z-index: 100;
 }
 
-.left-section{
-  width: 300px;
-  padding-left: 30px;
+.left-section {
+  width: 100%;
+  padding-left: 8px;
+  grid-area: left-section;
+  padding-top: 10px;
 }
 
-.nav-links{
+.middle-section {
+  width: 100%;
+  padding-right: 8px;
+  padding-left: 8px;
+  position: relative;
+  grid-area: middle-section;
+  margin-bottom: 5px;
+}
+
+.right-section {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 8px;
+  grid-area: right-section;
+  padding-top: 10px;
+}
+
+
+.nav-links {
   display: flex;
   align-items: center;
   gap: 5px;
   margin-right: 10px;
 }
 
-.logo{
-  height: 50px;
+.logo {
+  height: 30px;
 }
 
-.title-text{
-  font-size: 24px;
+.title-text {
+  font-size: 20px;
   font-weight: 600;
   color: rgb(35, 157, 239);
   text-decoration: underline;
   text-decoration-color: orange;
 }
 
-.order-icon{
+.order-icon {
   height: 20px;
 }
 
 .fav-text,
-.order-text{
+.order-text {
   font-size: 18px;
+  display: none;
 }
 
-.profile-pic{
-  width: 20px;
-  height: 20px;
+.profile-pic {
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   cursor: pointer;
 }
 
-.middle-section{
-  width: 100%;
-  padding-right: 40px;
-  position: relative;
-}
-
-.search-bar{
-  padding-top: 12px;
-  padding-bottom: 12px;
-  padding-left: 40px;
+.search-bar {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 30px;
   border: none;
-  background:#edeef0;
+  background: #edeef0;
   border-radius: 10px;
   border: 1px solid rgb(35, 157, 239);
   width: 100%;
@@ -72,50 +92,40 @@
   font-size: 16px;
 }
 
-.search-bar::placeholder{
-  font-size: 16px;
+.search-bar::placeholder {
+  font-size: 14px;
   color: #9ca3af;
 }
 
-
-
-.search-icon{
+.search-icon {
   position: absolute;
-  top: 50%;
-  left: 12px;
+  top: 60%;
+  left: 15px;
   z-index: 200;
   transform: translateY(-50%);
 }
 
-
-.right-section{
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-right: 30px;
+.search-icon svg{
+  height: 18px;
+  width: 18px;
 }
 
-.counter{
+
+.counter {
   position: relative;
 }
 
-.cart-icon{
+.cart-icon {
   height: 20px;
   width: 30px;
 }
 
-.cart-text{
-  font-size: 18px;
-  margin-left: 5px;
-}
-
-.fav-text{
-  margin-left: 5px;
+.cart-text {
+  display: none;
 }
 
 .cart-count,
-.likes-count{
+.likes-count {
   position: absolute;
   width: 20px;
   height: 18px;
@@ -130,14 +140,119 @@
   justify-content: center;
 }
 
-.likes-count{
+.likes-count {
   background: #ef4444;
   top: -5px;
   left: 14px;
 }
 
-.cart-count{
+.cart-count {
   background: rgb(254, 97, 0);
   top: -5px;
   left: 20px;
+}
+
+
+
+@media (min-width:768px) {
+  .header{
+    height: 65px;
+    display: grid;
+    grid-template-columns: 1fr 2.5fr 1.5fr;
+    grid-template-areas: "left-section middle-section right-section";
+  }
+
+  .left-section{
+    padding-left: 12px;
+    padding-top: 0px;
+  }
+
+  .logo{
+    height: 50px;
+  }
+
+  .title-text{
+    display: none;
+  }
+
+  .middle-section{
+    padding-right: 20px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+  }
+
+  .order-icon{
+    height: 20px;
+  }
+
+  .fav-text,
+  .order-text{
+    font-size: 18px;
+    display: block;
+  }
+
+  .search-bar{
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .search-bar::placeholder{
+    font-size: 16px;
+  }
+
+  .search-icon{
+    top: 50%;
+    left: 9px;
+  }
+
+  .right-section{
+    padding-right: 12px;
+    padding-top: 0px;
+  }
+
+  .cart-text{
+    font-size: 18px;
+    margin-left: 5px;
+    display: block;
+  }
+
+  .fav-text{
+    margin-left: 5px;
+  }
+  .profile-pic{
+    width: 35px;
+    height: 35px;
+  }
+
+}
+
+@media (min-width:1024px){
+  .middle-section{
+    padding-right: 40px;
+  }
+
+  .left-section{
+    padding-left: 20px;
+  }
+
+  .right-section{
+    padding-right: 20px;
+  }
+
+  .title-text{
+    display: block;
+    font-size: 24px;
+  }
+
+  .search-bar{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 35px;
+  }
+
+  .search-icon svg{
+    height:  20px !important;
+    width: 20px !important;
+  }
+
 }

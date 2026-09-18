@@ -1,6 +1,7 @@
 import { Star, CircleCheck,Heart } from 'lucide-react';
 import { money } from '../utils/money';
 import './DisplayProduct.css'
+//import './DisplayProducts.css'
 
 
 export function DisplayProduct({displayProducts,like,setlike,onCart,
@@ -38,15 +39,17 @@ export function DisplayProduct({displayProducts,like,setlike,onCart,
     <>
      {searchData.map((product)=>(
         <div className="cart" key={product.id}>
-          <img src={product.thumbnail} className='product-img' />
-           <Heart height={24} 
-              fill={like.includes(product.id)? '#ef4444':'none'}
-              color={like.includes(product.id)? '#ef4444':'#dcdcdc'}
-              className='heart-icon'
-              onClick={()=>{
-                handleLike(product.id)
-              }}
-            />
+          <div className='product-image-container'>
+            <img src={product.thumbnail} className='product-img' />
+            <Heart height={24} 
+                fill={like.includes(product.id)? '#ef4444':'none'}
+                color={like.includes(product.id)? '#ef4444':'#dcdcdc'}
+                className='heart-icon'
+                onClick={()=>{
+                  handleLike(product.id)
+                }}
+              />
+          </div>
           <div className="product-details">
             <div className='product-name'>{product.title}</div>
             <div className="content">
@@ -82,12 +85,12 @@ export function DisplayProduct({displayProducts,like,setlike,onCart,
             </div>
             <button className='add-to-cart-button' 
               onClick={()=>{
+                handleAddedMessage(product.id)
                 onCart(
                   product.id,
                   product.thumbnail,
                   product.title,
                   product.price,
-                  handleAddedMessage(product.id)
               )}}>
                 Add to Cart
             </button>

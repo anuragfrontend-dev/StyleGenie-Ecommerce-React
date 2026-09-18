@@ -15,7 +15,7 @@ export function SideBar({ handleCategories, setCategoriesActive,categoriesActive
           <div className='side-bar-profile'>
             <img src="toy.webp" />
           </div>
-          Kids & Toys
+           Toys
         </button>
         <button className={`side-bar-categorie ${categoriesActive==='smartphones'? 'categoryActive':''}`}
           onClick={() => {
@@ -25,7 +25,7 @@ export function SideBar({ handleCategories, setCategoriesActive,categoriesActive
           <div className='side-bar-profile'>
             <img src="smart-phone.webp" />
           </div>
-          Smartphone
+          Phone
         </button>
         <button className={`side-bar-categorie ${categoriesActive==='mens'? 'categoryActive':''}`}
           onClick={() => {

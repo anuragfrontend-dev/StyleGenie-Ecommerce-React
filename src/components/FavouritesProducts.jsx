@@ -49,15 +49,17 @@ export function FavouritesProducts({like,setlike,products,
       ) : (
           searchData.map((product) => (
             <div className="cart" key={product.id}>
-              <img src={product.thumbnail} className='product-img' />
-              <Heart height={24}
-                fill={like.includes(product.id) ? '#ef4444' : 'none'}
-                color={like.includes(product.id) ? '#ef4444' : '#dcdcdc'}
-                className='heart-icon'
-                onClick={() => {
-                  handleLike(product.id)
-                }}
-              />
+              <div className='product-image-container'>
+                <img src={product.thumbnail} className='product-img' />
+                <Heart height={24}
+                  fill={like.includes(product.id) ? '#ef4444' : 'none'}
+                  color={like.includes(product.id) ? '#ef4444' : '#dcdcdc'}
+                  className='heart-icon'
+                  onClick={() => {
+                    handleLike(product.id)
+                  }}
+                />
+            </div>
               <div className="product-details">
                 <div className='product-name'>{product.title}</div>
                 <div className="content">

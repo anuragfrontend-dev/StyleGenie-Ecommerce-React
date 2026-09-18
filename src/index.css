@@ -3,6 +3,7 @@
   margin: 0;
   box-sizing: border-box;
   font-family: Arial;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body{
@@ -13,3 +14,4 @@ a{
   text-decoration: none;
   color: black;
 }
+

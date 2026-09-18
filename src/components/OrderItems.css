@@ -1,45 +1,62 @@
 .order-item{
-  display: grid;
-  grid-template-columns: 100px 1fr 1fr;
-  padding-top: 30px;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 15px;
   background: #fff;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
 
-.order-product-img{
+.order-image-container{
   width: 100%;
-  height: 100%;
+  height: 150px;
+}
+
+
+.order-product-img{
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
 }
 
 .orderItem-details{
-  margin-left: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
 }
 
 .order-item-name{
   font-weight: 600;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .status{
   margin-top: 5px;
-  font-size: 16px;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .order-arriving-today-status{
   font-size: 16px;
+  font-weight: 500;
   color: green;
 }
 
 .status span{
-  font-size: 16px;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .order-quantity{
   margin-top: 5px;
+  font-weight: 500;
+  font-size: 16px;
 }
 
 .buy-it-again{
@@ -52,20 +69,24 @@
   font-size: 16px;
   cursor: pointer;
   display: flex;
+  justify-content: center;
   align-items: center;
 }
 
 .tracking-cancel-items-button{
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  width: 100%;
+  margin-top: 10px;
+  gap: 10px;
 }
 
 .tracking-btn,
 .order-btn{
-  width: 150px;
-  padding: 8px;
+  width: 100%;
+  padding:  8px 12px;
   cursor: pointer;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -79,3 +100,87 @@
 .order-btn:hover{
   background-color: rgb(240,240,240);
 }
+
+@media (min-width:380px){
+  .order-image-container{ 
+    width: 100%;
+    height: 180px;
+  }
+  .order-product-img{
+    height: 180px;
+    width: 180px;
+  }
+
+}
+
+@media (min-width:480px){
+  .order-item{
+  display: grid;
+  grid-template-columns: 80px 1fr 1fr;
+  padding: 20px 10px 10px 10px;
+}
+
+.order-image-container{
+  height: 80px;
+}
+
+.orderItem-details{
+  padding-left: 10px;
+}
+
+.status{
+  font-size: 16px;
+}
+
+.status span{
+  font-size: 16px;
+}
+
+.order-quantity{
+  margin-top: 5px;
+}
+
+.buy-it-again{
+  padding: 3px 5px;
+  width: 120px;
+}
+
+.tracking-cancel-items-button{
+  justify-content: space-between;
+  height: 100%;
+  margin-top: 0px;
+}
+
+.tracking-btn,
+.order-btn{
+  width: 120px;
+  padding: 5px;
+  font-size: 14px;
+}
+
+}
+
+@media (min-width:600px){
+  .order-item{
+  grid-template-columns: 100px 1fr 1fr;
+  padding: 30px 15px 20px 15px;
+}
+
+.orderItem-details{
+  margin-left: 15px;
+}
+
+.buy-it-again{
+  padding: 8px 12px;
+  width: 150px;
+}
+
+.tracking-btn,
+.order-btn{
+  width: 150px;
+  padding: 8px;
+  font-size: 16px;
+}
+
+}
+

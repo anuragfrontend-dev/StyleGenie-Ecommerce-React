@@ -5,38 +5,15 @@
 }
 
 .orders-container{
-  margin: 65px auto 0;
-  max-width: 900px;
+  margin: 80px auto 0;
+  max-width: 300px;
   background-color: #fff;
 }
 
 .your-orders-text{
-  padding-top: 30px;
-}
-
-.order-placed,
-.order-total,
-.oredr-id-text{
+  padding-top: 20px;
   font-size: 18px;
   font-weight: 600;
-}
-
-.order-placed-date{
-  font-size: 16px;
-  font-weight: 500;
-}
-
-.order-total-amount,
-.order-total{
-  margin-left: 22px;
-}
-
-
-
-.order-total-amount{
-  font-size: 16px;
-  font-weight: 600;
-  color: rgb(177, 39, 4);
 }
 
 .order{
@@ -47,22 +24,195 @@
 
 .order-header{
   display: flex;
-  justify-content:space-between;
-  background: rgb(240,240,240);
+  justify-content: flex-start;
+  flex-direction: column;
+  background: rgb(242 242 242);
   align-items: center;
-  height: 100px;
-  padding-left: 15px;
-  padding-right: 15px;
+  height: 90px;
+  padding-left: 10px;
+  padding-right: 10px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
 
 .left-side{
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.right-side{
+  width: 100%;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 8px;
+}
+
+.order-placed,
+.order-total,
+.oredr-id-text{
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.order-placed-date{
+  font-size: 14px;
+  font-weight: 500;
+}
+
+
+.order-total-amount{
+  font-size: 14px;
+  font-weight: 600;
+}
+
+
+
+@media (min-width:340px){
+ .orders-container{
+  max-width: 320px;
+ }
+}
+
+@media (min-width:360px) {
+  .orders-container{
+    max-width: 340px;
+  }
+}
+
+@media (min-width:380px){
+  .orders-container{
+    max-width: 360px;
+  }
+  .left-side{
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+}
+
+@media (min-width:420px) {
+  .orders-container{
+    max-width: 400px;
+  }
+}
+
+@media (min-width:450px){
+  .orders-container{
+    max-width: 420px;
+  }
+}
+
+
+@media (min-width:480px){
+  
+.orders-container{
+  max-width: 450px;
+}
+
+}
+
+
+@media (min-width:550) {
+  .orders-container{
+    max-width: 480;
+  }
+}
+
+@media (min-width:580px){
+  .orders-container{
+    max-width: 520px;
+  }
+}
+
+
+@media (min-width:600px){
+  
+.orders-container{
+  max-width: 580px;
+}
+
+.your-orders-text{
+  padding-top: 30px;
+}
+
+.order-header{
+  justify-content:space-between;
+  flex-direction: row;
+  height: 80px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.order-placed,
+.order-total,
+.oredr-id-text{
+  font-size: 18px;
+}
+
+.order-placed-date{
+  font-size: 16px;
+}
+
+.order-total-amount,
+.order-total{
+  margin-left: 22px;
+}
+
+.order-total-amount{
+  font-size: 16px;
+}
+
+
+.left-side{
+  justify-content: flex-start;
+  margin-left: 0;
 }
 
 .total-amount{
   margin-left: 30px;
+}
+
+}
+
+@media (min-width:720px) {
+.orders-container{
+  max-width: 700px;
+}
+}
+
+@media (min-width:768px) {
+  .orders-container{
+    max-width: 750px;
+    margin: 65px auto 0;
+  }
+
+  .right-side{
+    padding-left: 70px;
+  }
+}
+
+@media (min-width:950px) {
+  .orders-container{
+    max-width: 900px;
+  }
+}
+
+@media (min-width:1024px){
+
+.orders-container{
+  max-width: 950px;
+}
+
+.right-side{
+    padding-left: 180px;
+}
+
+
+.order-header{
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
 }

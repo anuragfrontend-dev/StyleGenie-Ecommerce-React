@@ -17,7 +17,7 @@ export function TrackingPage({ like, cart, orders }) {
 
   const{ percent,deliveryDate }=result;
   
-  const deliveryDateText=deliveryDate.format('dddd, MMMM D')
+  const deliveryDateText=deliveryDate.format('dddd, MMM D')
 
   
   let deliveryStatus;
@@ -64,8 +64,8 @@ export function TrackingPage({ like, cart, orders }) {
               (<><CircleCheck fill='green' color='#fff' /> <span>Delivered</span></>)
               :('Delivered')}</div>
           </div>
-          <div className='tracking-status'>
-            <div className="progress-bar" style={{width:`${percent}%`}}></div>
+          <div className='tracking-status' style={{'--percent':`${percent}%`}}>
+            <div className="progress-bar"></div>
           </div>
         </div>
       </div>
