@@ -5,12 +5,10 @@ import { OrderItems } from '../components/OrderItems';
 import './OrderPage.css'
 
 
-export function OrderPage({like,cart,orders,setOrders,onCart}){
+export function OrderPage({ orders,setOrders }){
 
   const handleCancelOrder = (id) => {
-
   const filtered = orders.map((orderItems) => {
-    
     const remainingItems = orderItems.items.filter((item) => item.productId !== id);
 
     const totalAmount = remainingItems.reduce((sum, item) => {
@@ -23,7 +21,6 @@ export function OrderPage({like,cart,orders,setOrders,onCart}){
       if (price <= 200) deliveryCharge = 20;
       else if (price < 1000) deliveryCharge = 40;
       else deliveryCharge = 0;
-      
       return sum + (deliveryCharge * item.productQuantity);
     }, 0);
 
@@ -44,10 +41,7 @@ export function OrderPage({like,cart,orders,setOrders,onCart}){
 
   return(
     <div className='order-page-container'>
-      <Header 
-        like={like} 
-        cart={cart} 
-      />
+      <Header />
       <div className="orders-container">
         <h1 className="your-orders-text">Your Orders</h1>
         {orders.map((orderItems)=>(
@@ -70,7 +64,6 @@ export function OrderPage({like,cart,orders,setOrders,onCart}){
           </div>
           <OrderItems 
             orderItems={orderItems} 
-            onCart={onCart}
             handleCancelOrder={handleCancelOrder}
           />
         </div>

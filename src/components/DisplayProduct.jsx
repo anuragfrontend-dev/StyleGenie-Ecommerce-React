@@ -1,11 +1,14 @@
 import { Star, CircleCheck,Heart } from 'lucide-react';
 import { money } from '../utils/money';
+import { useCart } from '../context/CartContext';
+import { useFavourites } from '../context/FavouritesContext';
 import './DisplayProduct.css'
-//import './DisplayProducts.css'
 
 
-export function DisplayProduct({displayProducts,like,setlike,onCart,
+export function DisplayProduct({displayProducts,
   setQuantity,quantity,addedMessageId,setAddedMessageId,search}){
+    const { dispatch:cartDispatch }=useCart();
+    const { like, dispatch:likeDispatch }=useFavourites();
 
   const handleAddedMessage=(id)=>{
     setAddedMessageId(id);
@@ -20,16 +23,6 @@ export function DisplayProduct({displayProducts,like,setlike,onCart,
     setQuantity(prev=>({...prev,[id]:val}));
   }
 
-  const handleLike=(id)=>{
-    if(like.includes(id)){
-      setlike(like.filter((likeId)=>(
-        likeId!==id
-      )))
-    }
-    else{
-      setlike([...like,id])
-    }
-  }
 
   const searchData=displayProducts.filter((displayItem)=>
     displayItem?.title?.toLowerCase().includes(search.toLowerCase())
@@ -40,13 +33,16 @@ export function DisplayProduct({displayProducts,like,setlike,onCart,
      {searchData.map((product)=>(
         <div className="cart" key={product.id}>
           <div className='product-image-container'>
-            <img src={product.thumbnail} className='product-img' />
-            <Heart height={24} 
+             <img src={product.thumbnail} className='product-img' />
+             <Heart height={24} 
                 fill={like.includes(product.id)? '#ef4444':'none'}
                 color={like.includes(product.id)? '#ef4444':'#dcdcdc'}
                 className='heart-icon'
                 onClick={()=>{
-                  handleLike(product.id)
+                  likeDispatch({
+                    type:'ADD_TO_FAVOURITES',
+                    payload:product.id
+                  })
                 }}
               />
           </div>
@@ -85,13 +81,18 @@ export function DisplayProduct({displayProducts,like,setlike,onCart,
             </div>
             <button className='add-to-cart-button' 
               onClick={()=>{
-                handleAddedMessage(product.id)
-                onCart(
-                  product.id,
-                  product.thumbnail,
-                  product.title,
-                  product.price,
-              )}}>
+                cartDispatch({
+                  type:'ADD_TO_CART',
+                  payload:{
+                    id:product.id,
+                    thumbnail:product.thumbnail,
+                    title:product.title,
+                    price:product.price,
+                    qty:quantity[product.id]||1
+                  }
+                })
+                handleAddedMessage(product.id);
+              }}>
                 Add to Cart
             </button>
           </div>

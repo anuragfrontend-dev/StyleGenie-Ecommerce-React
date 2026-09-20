@@ -2,21 +2,16 @@ import { Link } from 'react-router-dom';
 import { Star, CircleCheck,Heart } from 'lucide-react';
 import { money } from '../utils/money';
 import './FavouritesProducts.css'
-export function FavouritesProducts({like,setlike,products,
-  onCart,quantity,setQuantity,addedMessageId,setAddedMessageId,search}) {
+import { useCart } from '../context/CartContext';
+import { useFavourites } from '../context/FavouritesContext';
+
+export function FavouritesProducts({products,quantity,setQuantity,
+  addedMessageId,setAddedMessageId,search}) {
+  
+  const { dispatch:cartDispatch }=useCart();
+  const { like,dispatch:likeDispatch }=useFavourites();
   
   const likeProducts=products.filter((product)=>(like.includes(product.id)));
-  
-  const handleLike=(id)=>{
-    if(like.includes(id)){
-      setlike(like.filter((likeId)=>(
-        likeId!==id
-      )))
-    }
-    else{
-      setlike([...like,id])
-    }
-  }
 
   const handleSelector=(e,id)=>{
     const val=Number(e.target.value);
@@ -55,11 +50,14 @@ export function FavouritesProducts({like,setlike,products,
                   fill={like.includes(product.id) ? '#ef4444' : 'none'}
                   color={like.includes(product.id) ? '#ef4444' : '#dcdcdc'}
                   className='heart-icon'
-                  onClick={() => {
-                    handleLike(product.id)
-                  }}
+                  onClick={()=>{
+                    likeDispatch({
+                      type:'ADD_TO_FAVOURITES',
+                      payload:product.id
+                    })
+                 }}
                 />
-            </div>
+              </div>
               <div className="product-details">
                 <div className='product-name'>{product.title}</div>
                 <div className="content">
@@ -93,15 +91,19 @@ export function FavouritesProducts({like,setlike,products,
                   )}
                 </div>
                 <button className='add-to-cart-button' onClick={() => {
-                  onCart(
-                    product.id,
-                    product.thumbnail,
-                    product.title,
-                    product.price,
-                    handleAddedMessage(product.id)
-                  )
-                }}
-                >Add to Cart</button>
+                  cartDispatch({
+                    type:'ADD_TO_CART',
+                    payload:{
+                      id:product.id,
+                      thumbnail:product.thumbnail,
+                      title:product.title,
+                      price:product.price,
+                      qty:quantity[product.id]||1
+                    }
+                  })
+                  handleAddedMessage(product.id);
+                }}>
+                  Add to Cart</button>
               </div>
             </div>
           ))
