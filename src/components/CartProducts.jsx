@@ -1,11 +1,12 @@
-import { money } from "../utils/money"
+import CartItem from "./CartItem";
 import { useCart } from "../context/CartContext"
+import { useCallback } from "react";
 import './CartProducts.css'
 
 export function CartProducts() {
   const { cart, dispatch }=useCart();
 
-  const updateQuantity=(id,newQuantity)=>{
+  const updateQuantity = useCallback((id,newQuantity)=>{
     dispatch({
       type:'UPDATE_QUANTITY',
       payload:{
@@ -13,38 +14,24 @@ export function CartProducts() {
         qty:newQuantity
       }
     })
-  }
+  },[dispatch]);
+
+  const removeItem = useCallback((id)=>{
+    dispatch({
+      type:'REMOVE_FROM_CART',
+      payload:{id}
+    })
+  },[dispatch]);
 
   return (
     <div className="cart-items">
       {cart.map((cartItem) => (
-        <div className="cart-item" key={cartItem.productId}>
-          <img src={cartItem.productImg} className='cart-item-img' />
-          <div className="cart-item-details">
-            <div className='cart-item-name'>{cartItem.productName}</div>
-            <div className='cartItem-price'>₹{money(cartItem.productPrice).toLocaleString()}</div>
-            <div className='details'>
-              <div>Quantity:{cartItem.productQuantity}
-                <select value={cartItem.productQuantity} onChange={(e) => {
-                  updateQuantity(cartItem.productId, e.target.value)
-                }}>
-                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
-                    <option key={num} value={num}>{num}</option>
-                  ))}
-                </select>
-              </div>
-              <button className='remove-buttom'
-                onClick={() => {
-                  dispatch({
-                    type:'REMOVE_FROM_CART',
-                    payload:{
-                      id:cartItem.productId
-                    }
-                  })
-                }}>remove</button>
-            </div>
-          </div>
-        </div>
+        <CartItem 
+          key={cartItem.productId}
+          cartItem={cartItem}
+          onQuantityChange={updateQuantity}
+          onRemove={removeItem}
+        />
       ))}
     </div>
   )
