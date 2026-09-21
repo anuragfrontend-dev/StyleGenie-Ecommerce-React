@@ -36,7 +36,7 @@ export function HomePage({products,displayProducts,setDisplayProducts,
   }
 
   return (
-    <div className='container'>
+    <main className='container'>
       <Header 
         search={search}
         setSearch={setSearch}
@@ -52,7 +52,7 @@ export function HomePage({products,displayProducts,setDisplayProducts,
         categoriesActive={categoriesActive} 
         setCategoriesActive={setCategoriesActive}
       />
-      <div className="cart-container">
+      <section className="cart-container">
         <DisplayProduct 
           displayProducts={displayProducts}
           setQuantity={setQuantity}
@@ -61,7 +61,7 @@ export function HomePage({products,displayProducts,setDisplayProducts,
           addedMessageId={addedMessageId}
           search={search}
         />
-      </div>
-    </div>
+      </section>
+    </main>
   )
 }

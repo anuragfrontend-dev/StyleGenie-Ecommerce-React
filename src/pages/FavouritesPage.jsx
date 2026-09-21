@@ -6,13 +6,13 @@ export function FavouritesPage({ products,quantity,setQuantity,
   addedMessageId,setAddedMessageId,search,setSearch }) {
 
   return (
-    <div className='container'>
+    <main className='container'>
       <Header
         search={search}
         setSearch={setSearch}
       />
 
-      <div className='like-cart'>
+      <section className='like-cart'>
         <FavouritesProducts 
           products={products}
           quantity={quantity}
@@ -21,7 +21,7 @@ export function FavouritesPage({ products,quantity,setQuantity,
           setAddedMessageId={setAddedMessageId}
           search={search}
         />
-      </div>
-    </div>
+      </section>
+    </main>
   )
 }

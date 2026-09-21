@@ -10,26 +10,28 @@ export function CartPage({ setOrders }) {
   const { cart }=useCart()
 
   return (
-    <div className='cart-page-container'>
+    <main className='cart-page-container'>
       <CartHeader />
 
-      <div className="cart-page">
-        {cart?.length > 0 ?
-          '':
+      <section className="cart-page">
+        {cart?.length === 0 ?(
           <div>
             <div className='empty-text'>Your cart is empty.</div>
             <Link to="/">
               <button className='view-product'>View Products</button>
             </Link>
           </div>
-        }
-        <div className='review-text'>Review your order</div>
-        <div className="cart-items-container">
-          <CartProducts  />
-          <PaymentSummary  setOrders={setOrders} />
-        </div>
-      </div>
-    </div>
+        ):(
+        <>
+          <div className='review-text'>Review your order</div>
+          <section className="cart-items-container">
+            <CartProducts  />
+            <PaymentSummary  setOrders={setOrders} />
+          </section>
+        </>
+        )}
+      </section>
+    </main>
   )
 }
 

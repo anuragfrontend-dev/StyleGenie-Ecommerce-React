@@ -16,19 +16,19 @@ export function CartHeader(){
   const totalQuantity=cart.reduce((sum,cartItems)=>(sum+cartItems.productQuantity),0)
 
   return(
-    <div className="cart-header">
-      <div className="left-cart-section">
+    <header className="cart-header">
+      <nav className="left-cart-section">
         <Link to="/" className='cart-nav-link'>
           <img src={logo} className='cart-logo' />
           <div className='cart-title'>StyleGenie</div>
         </Link>
-      </div>
-      <div className="middle-cart-section">
+      </nav>
+      <nav className="middle-cart-section">
         <Link to="/">
           <div className='checkout'>Checkout(<span>{totalQuantity} items</span>)</div>
         </Link>
-      </div>
-      <div className="right-cart-section">
+      </nav>
+      <nav className="right-cart-section">
         <Link  to='/Favourites' className='cart-nav-link cart-likes' >
           <Heart height={20} />
           <div className='cart-fav-text'>Favourites</div>
@@ -36,8 +36,8 @@ export function CartHeader(){
           (<div className="cart-likes-count">{totalLikeProducts}</div>)}
         </Link>
         <Lock height={20} className='lock-icon' />
-      </div>
-    </div>
+      </nav>
+    </header>
   )
 }
 

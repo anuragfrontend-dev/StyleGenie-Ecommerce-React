@@ -28,23 +28,23 @@ export default function Header({ search,setSearch }){
 
   return(
     <header className='header'>
-      <div className="left-section">
+      <nav className="left-section">
         <Link to="/" className='nav-links'>
           <img src={logo} className='logo' />
           <div className='title-text'>StyleGenie</div>
         </Link>
-      </div>
+      </nav>
       <div className="middle-section">
         <span className='search-icon'><Search height={22} width={22} color='#9ca3af' /></span>
         <input 
-          type="text" 
+          type="search" 
           placeholder='Search' 
           className='search-bar'
           value={search}
           onChange={handleSearch}
         />
       </div>
-      <div className="right-section">
+      <nav className="right-section">
         <Link to={isOnOrders? '/':'/Orders'} className='nav-links'>
           <img src={order} className='order-icon' />
           <div className='order-text'>Orders</div>
@@ -64,7 +64,7 @@ export default function Header({ search,setSearch }){
            <div className='cart-text'>Cart</div>
         </Link>
         <img src='/user.png' className='profile-pic' />
-      </div>
+      </nav>
     </header>
   )
 }

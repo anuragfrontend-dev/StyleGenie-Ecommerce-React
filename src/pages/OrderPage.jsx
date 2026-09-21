@@ -40,12 +40,12 @@ export function OrderPage({ orders,setOrders }){
   };
 
   return(
-    <div className='order-page-container'>
+    <main className='order-page-container'>
       <Header />
-      <div className="orders-container">
+      <section className="orders-container">
         <h1 className="your-orders-text">Your Orders</h1>
         {orders.map((orderItems)=>(
-          <div className="order" key={orderItems.orderId}>
+          <article className="order" key={orderItems.orderId}>
           <div className="order-header">
             <div className="left-side">
               <div>
@@ -66,9 +66,9 @@ export function OrderPage({ orders,setOrders }){
             orderItems={orderItems} 
             handleCancelOrder={handleCancelOrder}
           />
-        </div>
+        </article>
         ))}
-      </div>
-    </div>
+      </section>
+    </main>
   )
 }

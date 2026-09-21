@@ -33,21 +33,25 @@ export function TrackingPage({ orders }) {
   }
 
   return (
-    <div className="tracking-page-container">
+    <main className="tracking-page-container">
       <Header />
-      <div className="tracking-content">
-        <Link to={'/Orders'}>
-          <button className='view-orders'>View all Orders</button>
-        </Link>
-
-        {deliveryStatus}
-
-        <div className='tracking-product-name'>{currentProduct.productName}</div>
-        <div className='tracking-product-quantity'>Quantity: <span>{currentProduct.productQuantity}</span></div>
-        <div className='tracking-product-img'>
-          <img src={currentProduct.productImg} />
-        </div>
-        <div className='tracking-status-container'>
+      <section className="tracking-content">
+        <nav>
+          <Link to={'/Orders'}>
+            <button className='view-orders'>View all Orders</button>
+          </Link>
+        </nav>
+        
+        <article>
+          {deliveryStatus}
+          <div className='tracking-product-name'>{currentProduct.productName}</div>
+          <div className='tracking-product-quantity'>Quantity: <span>{currentProduct.productQuantity}</span></div>
+          <div className='tracking-product-img'>
+            <img src={currentProduct.productImg} />
+          </div>
+        </article>
+         
+        <section className='tracking-status-container'>
           <div className='tracking-status-names'>
             <div className='tracking-status-name'>{percent>10? 
               (<><CircleCheck fill='green' color='#fff' /><span>Prepared</span></>)
@@ -65,8 +69,8 @@ export function TrackingPage({ orders }) {
           <div className='tracking-status' style={{'--percent':`${percent}%`}}>
             <div className="progress-bar"></div>
           </div>
-        </div>
-      </div>
-    </div>
+        </section>
+      </section>
+    </main>
   )
 }
